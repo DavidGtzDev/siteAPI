@@ -1,0 +1,16 @@
+{
+    "name": "siteAPI",
+    "description": "Extension that extracts a website's content and posts it to an api",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["storage"],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "web_accessible_resources": [
+        "assets/pattern_circles-4_1_2_0-0_0_1__ffffff_fecd7138.png"
+    ]
+}
