@@ -44,6 +44,15 @@ function getTables(html){
 
 function tableToJSON(tables){
     let finalArray = []
-    
+    for(let i = 0; i < tables.length; i++){
+        let arrayPush = []
+        let objPush = {}
+        
+        let strObj = JSON.stringify(tables[i])
+        headers = JSON.stringify(JSON.stringify(strObj.split("</thead>",1)).split("</tr>",1)).split("</th>",5)
+        for(let i = 0; i < headers.length; i++){
+            alert(headers[i])
+        }
+    }
     return finalArray
 }
