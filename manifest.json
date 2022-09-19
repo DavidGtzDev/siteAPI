@@ -6,8 +6,11 @@
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["storage"],
+    "permissions": ["tabs","scripting"],
     "action": {
         "default_popup": "popup.html"
-    }
+    },
+    "host_permissions": [
+       "https://es.wikipedia.org/"
+    ]
 }
