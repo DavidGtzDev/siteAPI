@@ -44,26 +44,9 @@ function getTables(html){
 
 function tableToJSON(tables){
     let finalArray = []
-    for(let i = 0;i < tables.length; i++){
-        let tableParse = `<table${tables[i]}</table>`
-        let stringToDOM = new DOMParser().parseFromString(tableParse, "text/html")
-        let headersHTML
-
-        if(typeof(stringToDOM.getElementsByTagName("thead")[0]) != "undefined"){
-            headersHTML = stringToDOM.getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")
-        }else{
-            headersHTML = stringToDOM.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")
-        }
-
-        let headers = []
-
-        for(let j = 0; j < headersHTML.length; j++){
-            if(headersHTML[j].innerText != ""){
-                headers.push(headersHTML[j].innerText)
-            }
-        }
-
-        alert(headers)
+    for(let i = 0; i < tables.length; i++){
+        let headers = getTableHeaders(tables[i])
+        let content = getTableContent(tables[i])
     }
 
     return finalArray
