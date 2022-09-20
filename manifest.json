@@ -4,13 +4,14 @@
     "version": "1.0",
     "manifest_version": 3,
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "scripts/background.js"
     },
     "permissions": ["tabs","scripting"],
     "action": {
         "default_popup": "popup.html"
     },
     "host_permissions": [
-       "https://es.wikipedia.org/"
+       "https://es.wikipedia.org/",
+       "https://developer.mozilla.org/"
     ]
 }
