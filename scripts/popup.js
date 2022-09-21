@@ -17,10 +17,10 @@ btnSelect.addEventListener("click", async() => {
         return;
     }
 
-    //Get all tables from the HTML
-    tables = getTables(result)
-    //Transform those tables into JSON 
-    jsonArray = tableToJSON(tables)
+    //Transform HTML into a JSON object
+    let siteHTML = new DOMParser().parseFromString(result,"text/html")
+    let JSON_array = tableHtmlToJSON(siteHTML)
+    
     
     //Stop diplaying current elements
     ttlContainer.style.display = "none"
@@ -28,36 +28,43 @@ btnSelect.addEventListener("click", async() => {
 
 })
 
-function getTables(html){
-    //Split every element with the table tag
-    //This could be done better by transforming the html string into a DOM element
-    //and then getting all the table elements
-    //might do it later
-    arr = html.split("<table",50)
-    arrReturn = []
+function tableHtmlToJSON(html){
+  let JSON_array = []
+  let tables = html.getElementsByTagName("table")
 
-    //From the 50 elements of the array, push only the valid ones
-    for(let i = 0; i < arr.length; i++){
-        if(i == 0){
-            //pass
-        }else if(arr[i] == undefined){
-            //pass
-        }else{
-            temp = arr[i].split("</table>",1)
-            arrReturn.push(temp)
-        }
-    }
-    return arrReturn
-}
+  for(let i = 0; i < tables.length; i++){
+    let tableContents = []
+    let headers = []
+    let content = []
+    let headerCounter = 0
+    let myObj = {}
 
-function tableToJSON(tables){
-    let finalArray = []
-    for(let i = 0; i < tables.length; i++){
-        //Get the headers and the content
-        let headers = getTableHeaders(tables[i])
-        let content = getTableContent(tables[i])
+    for(let j = 0; j < tables[i].getElementsByTagName("th").length; j++){
+      headers.push(tables[i].getElementsByTagName("th")[j].innerText)
     }
 
-    return finalArray
+    for(let j = 0; j < tables[i].getElementsByTagName("td").length; j++){
+      content.push(tables[i].getElementsByTagName("td")[j].innerText)
+    }
+
+    for(let j = 0; j < content.length; j++){
+      if(headerCounter > headers.length - 1){
+        tableContents.push(myObj)
+        myObj = {}
+        headerCounter = 0
+      }
+
+      myObj[headers[headerCounter]] = content[j]
+      headerCounter++
+
+    }
+
+    headerCounter = 0
+    JSON_array.push(tableContents)
+  }
+
+  return(JSON_array)
 }
+
+
 

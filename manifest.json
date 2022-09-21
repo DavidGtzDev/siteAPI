@@ -3,9 +3,6 @@
     "description": "Extension that extracts a website's content and posts it to an api",
     "version": "1.0",
     "manifest_version": 3,
-    "background": {
-        "service_worker": "scripts/background.js"
-    },
     "permissions": ["tabs","scripting"],
     "action": {
         "default_popup": "popup.html"
