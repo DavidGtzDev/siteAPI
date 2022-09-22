@@ -1,5 +1,6 @@
 const btnSelect = document.getElementById("button_select")
 const ttlContainer = document.getElementById("title_container")
+const body = document.getElementById("body")
 let result;
 
 
@@ -26,45 +27,23 @@ btnSelect.addEventListener("click", async() => {
     ttlContainer.style.display = "none"
     btnSelect.style.display = "none"
 
+    for(let i = 0; i < JSON_array.length; i++){
+      let jsonPre = document.createElement("pre")
+      jsonPre.textContent = JSON.stringify(JSON_array[i][0], undefined, 2)
+      jsonPre.className = "jsonContainer"
+      body.appendChild(jsonPre)
+
+      jsonPre.addEventListener("click", async() => {
+        console.log(JSON_array[i])
+      })
+    }
+
+    body.style.width = "350px"
+    body.style.height = "350px"
+
 })
 
-function tableHtmlToJSON(html){
-  let JSON_array = []
-  let tables = html.getElementsByTagName("table")
 
-  for(let i = 0; i < tables.length; i++){
-    let tableContents = []
-    let headers = []
-    let content = []
-    let headerCounter = 0
-    let myObj = {}
-
-    for(let j = 0; j < tables[i].getElementsByTagName("th").length; j++){
-      headers.push(tables[i].getElementsByTagName("th")[j].innerText)
-    }
-
-    for(let j = 0; j < tables[i].getElementsByTagName("td").length; j++){
-      content.push(tables[i].getElementsByTagName("td")[j].innerText)
-    }
-
-    for(let j = 0; j < content.length; j++){
-      if(headerCounter > headers.length - 1){
-        tableContents.push(myObj)
-        myObj = {}
-        headerCounter = 0
-      }
-
-      myObj[headers[headerCounter]] = content[j]
-      headerCounter++
-
-    }
-
-    headerCounter = 0
-    JSON_array.push(tableContents)
-  }
-
-  return(JSON_array)
-}
 
 
 
