@@ -20,11 +20,18 @@ function viewSendJSONFiles(json){
     downloadButton.className = "button_general"
     buttonContainer.style.display = "flex"
 
-    //este programa no esta haciendo al
-
-
     buttonContainer.appendChild(sendButton)
     buttonContainer.appendChild(downloadButton)
     body.appendChild(jsonPre)
     body.appendChild(buttonContainer)
+
+    sendButton.addEventListener("click", () => {
+      sendFile(json)
+    })
+
+    downloadButton.addEventListener("click", () => {
+      downloadFile(json)
+    })
+
+
   }

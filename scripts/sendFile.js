@@ -1,0 +1,3 @@
+function sendFile(json){
+    //Pendiente
+}
