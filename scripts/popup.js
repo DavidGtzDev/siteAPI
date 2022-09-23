@@ -34,7 +34,7 @@ btnSelect.addEventListener("click", async() => {
       body.appendChild(jsonPre)
 
       jsonPre.addEventListener("click", async() => {
-        console.log(JSON_array[i])
+        viewSendJSONFiles(JSON_array[i])
       })
     }
 

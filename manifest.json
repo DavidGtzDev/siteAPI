@@ -12,6 +12,8 @@
     },
     "host_permissions": [
        "https://es.wikipedia.org/",
-       "https://developer.mozilla.org/"
+       "https://developer.mozilla.org/",
+       "http://www.ssn.unam.mx/",
+       "http://www2.ssn.unam.mx/"
     ]
 }
