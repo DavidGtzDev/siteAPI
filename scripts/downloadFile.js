@@ -1,7 +1,10 @@
 function downloadFile(json){
     data = JSON.stringify(json)
     download("siteAPI.json",data)
+    document.body.innerHTML = '';
+    window.close();
 }
+
 
 function download(filename, text) {
     let element = document.createElement('a');

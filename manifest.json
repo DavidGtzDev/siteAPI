@@ -8,6 +8,7 @@
         "service_worker": "scripts/background.js"
     },
     "action": {
+        "default_icon": "assets/icon.png",
         "default_popup": "popup.html"
     },
     "host_permissions": [

@@ -6,7 +6,7 @@ function viewSendJSONFiles(json){
     }
 
     let jsonPre = document.createElement("pre")
-    jsonPre.textContent = JSON.stringify(json, undefined, 2).substring(0,645)
+    jsonPre.textContent = JSON.stringify(json, undefined, 2).substring(0,630)
     jsonPre.className = "jsonSendContainer"
     jsonPre.style.height = "90%"
     
